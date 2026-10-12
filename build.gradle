@@ -1,0 +1,24 @@
+plugins {
+    id 'fabric-loom' version '1.17.16'
+}
+group = 'dev.pawly'
+version = '0.1.0-rebuild'
+base { archivesName = 'pawly-rebuilt' }
+repositories { mavenCentral(); maven { url = 'https://api.modrinth.com/maven' } }
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.11'
+    mappings loom.officialMojangMappings()
+    modImplementation 'net.fabricmc:fabric-loader:0.19.3'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.141.6+1.21.11'
+    modCompileOnly 'maven.modrinth:malilib:0.27.20'
+    modCompileOnly 'maven.modrinth:litematica:0.26.16'
+    testImplementation platform('org.junit:junit-bom:5.12.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.ow2.asm:asm-tree:9.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+tasks.withType(JavaCompile).configureEach { options.release = 21; options.encoding = 'UTF-8' }
+test { useJUnitPlatform(); systemProperty 'pawly.classes', layout.buildDirectory.dir('classes/java/main').get().asFile.absolutePath }
+tasks.withType(AbstractArchiveTask).configureEach { preserveFileTimestamps = false; reproducibleFileOrder = true }
+tasks.register('printCompileClasspath') { doLast { println sourceSets.main.compileClasspath.asPath } }

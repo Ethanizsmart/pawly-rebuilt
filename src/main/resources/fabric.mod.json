@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "pawly_rebuilt",
+  "version": "0.1.0-rebuild",
+  "name": "Pawly Rebuilt",
+  "description": "Independent source rebuild under development. See feature coverage report.",
+  "environment": "client",
+  "entrypoints": {"client": ["dev.pawly.rebuilt.PawlyClient"]},
+  "mixins": ["pawly-rebuilt.mixins.json"],
+  "depends": {"fabricloader": ">=0.19.3", "minecraft": "1.21.11", "java": ">=21", "fabric-api": "*"}
+}

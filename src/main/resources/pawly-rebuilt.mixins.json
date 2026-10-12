@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "package": "dev.pawly.rebuilt.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["CameraMixin","EntityMixin","KeyboardInputMixin","ConnectionMixin","LightTextureMixin","LivingEntityMixin","GameModeMixin","ClientPacketListenerMixin","ResourcePackMixin","GuiGraphicsMixin","PlayerSkinMixin","EntityRendererMixin","DebugScreenMixin"],
+  "injectors": {"defaultRequire": 1}
+}
